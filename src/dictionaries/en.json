@@ -4,6 +4,7 @@
     "switch": "Switch to Russian"
   },
   "home": {
+    "title": "Title",
     "block1": {
       "title": "Performance",
       "text": "Next.js applications are fast "

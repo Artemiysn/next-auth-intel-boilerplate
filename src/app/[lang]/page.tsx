@@ -14,7 +14,7 @@ export default async function Home({ params }: Props) {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 font-sans ">
-      <h1 className="mb-5">Main page</h1>
+      <h1 className="text-3xl font-bold mb-6">{dict.home.title}</h1>
       <article>
         {blocks.map((block, index) => (
           <div
