@@ -42,6 +42,7 @@ async function Header({ lang }: { lang: Locale }) {
             loginText={dict.header.login}
             logoutText={dict.header.logout}
             email={email}
+            loadingText={dict.header.loading}
           />
           <LangSwitcher linkText={dict.header.switch} />
         </div>

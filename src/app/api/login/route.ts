@@ -15,8 +15,7 @@ export async function POST(request: Request) {
 
   const token = signToken(MOCK_USER);
 
-  //@ts-ignore
-  await cookies().set(COOKIE_NAME, token, {
+  (await cookies()).set(COOKIE_NAME, token, {
     httpOnly: true, 
     sameSite: 'strict',
     maxAge: 60 * 60 * 24 * 7, 

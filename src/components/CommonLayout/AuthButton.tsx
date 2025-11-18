@@ -9,23 +9,25 @@ type Props = {
   logoutText: string;
   email: string | undefined;
   isLoggedIn: boolean;
+  loadingText: string;
 };
 
-export default function AuthButton({ loginText, logoutText, email }: Props) {
+export default function AuthButton({isLoggedIn, loginText, logoutText, email, loadingText }: Props) {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAuthLoading, setIsAuthLoading] = useState(false);
+
   const router = useRouter();
 
   const handleAuth = async () => {
     const apiPath = isLoggedIn ? '/api/logout' : '/api/login';
-    
+    setIsAuthLoading(true);
     const response = await fetch(apiPath, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       // здесь отправляются какие-то данные пользователя на бек - Артем
       // ....  
     });
-
+    setIsAuthLoading(false);
     if (response.ok) {
       router.refresh(); 
     } else {
@@ -43,9 +45,9 @@ export default function AuthButton({ loginText, logoutText, email }: Props) {
       )}
       <button 
         onClick={handleAuth}
-        className={buttonClass}
+        className={`${buttonClass} min-w-[120px]`}
       >
-        {isLoggedIn ? logoutText : loginText}
+        {isAuthLoading ? loadingText : isLoggedIn ? logoutText : loginText}
       </button>
 
     </div>

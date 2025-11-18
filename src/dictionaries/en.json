@@ -5,7 +5,8 @@
     "nav_home": "Home",
     "nav_about": "About",
     "login": "Login",
-    "logout": "Logout"
+    "logout": "Logout",
+    "loading": "Loading..."
   },
   "home": {
     "title": "Title (This page is for everyone)",

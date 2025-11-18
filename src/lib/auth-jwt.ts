@@ -11,8 +11,7 @@ type AuthStatus = {
 };
 
 export async function getAuthStatusJWT(): Promise<AuthStatus> {
-  //@ts-ignore
-  const token = await cookies().get(COOKIE_NAME)?.value;
+  const token = (await cookies()).get(COOKIE_NAME)?.value;
 
   if (!token) {
     return { isLoggedIn: false };
@@ -28,8 +27,7 @@ export async function getAuthStatusJWT(): Promise<AuthStatus> {
     };
   }
 
-  //@ts-ignore
-  await cookies().delete(COOKIE_NAME);
+  (await cookies()).delete(COOKIE_NAME);
   
   return { isLoggedIn: false };
 }
