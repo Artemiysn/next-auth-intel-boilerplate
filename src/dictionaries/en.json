@@ -1,10 +1,14 @@
 {
   "header": {
     "title": "Demo Project",
-    "switch": "Switch to Russian"
+    "switch": "Switch to Russian",
+    "nav_home": "Home",
+    "nav_about": "About",
+    "login": "Login",
+    "logout": "Logout"
   },
   "home": {
-    "title": "Title",
+    "title": "Title (This page is for everyone)",
     "block1": {
       "title": "Performance",
       "text": "Next.js applications are fast "
@@ -16,6 +20,21 @@
     "block3": {
       "title": "Type Safety",
       "text": "TypeScript ensures your code is easy to maintain"
+    }
+  },
+  "about": {
+    "title": "This page is for authorized only!",
+    "block1": {
+      "title": "Mission",
+      "text": "Our mission is to build "
+    },
+    "block2": {
+      "title": "Team",
+      "text": "We are a team of developers "
+    },
+    "block3": {
+      "title": "Technology",
+      "text": "React, Next.js TypeScript for development."
     }
   }
 }
