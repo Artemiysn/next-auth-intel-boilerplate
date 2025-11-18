@@ -1,5 +1,7 @@
 import { Locale } from "@/lib/i18n-config";
 import { getDictionary } from "@/lib/dictionary";
+import { getAuthStatusJWT } from '@/lib/auth-jwt';
+import { redirect } from "next/navigation";
 
 type Props = {
   params: Promise<{ lang: Locale }>;
@@ -8,8 +10,13 @@ type Props = {
 export default async function Home({ params }: Props) {
 
   const { lang } = await params;
-  const dict = await getDictionary(lang);
 
+
+  const { isLoggedIn } = await getAuthStatusJWT();
+  if (!isLoggedIn) {
+    return redirect(`/${lang}`); 
+  }
+  const dict = await getDictionary(lang);
   const blocks = [dict.about.block1, dict.about.block2, dict.about.block3];
 
   return (

@@ -1,19 +1,36 @@
 'use client';
 import { useState } from 'react';
 import { buttonClass } from '../ui/Button';
+import router from 'next/router';
+import { useRouter } from "next/navigation";
 
 type Props = {
   loginText: string;
   logoutText: string;
-  email: string;
+  email: string | undefined;
+  isLoggedIn: boolean;
 };
 
 export default function AuthButton({ loginText, logoutText, email }: Props) {
-  // Имитация состояния авторизации
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleAuth = () => {
-    setIsLoggedIn(!isLoggedIn);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+
+  const handleAuth = async () => {
+    const apiPath = isLoggedIn ? '/api/logout' : '/api/login';
+    
+    const response = await fetch(apiPath, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      // здесь отправляются какие-то данные пользователя на бек - Артем
+      // ....  
+    });
+
+    if (response.ok) {
+      router.refresh(); 
+    } else {
+      console.error(`Ошибка логина'}`);
+    }
   };
   
   return (

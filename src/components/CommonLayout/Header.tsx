@@ -4,15 +4,15 @@ import LangSwitcher from "./LangSwitcher";
 import Link from "next/link";
 import AuthButton from "./AuthButton";
 import { LinkClass } from "../ui/Link";
+import { getAuthStatusJWT } from '@/lib/auth-jwt';
 
 async function Header({ lang }: { lang: Locale }) {
   const dict = await getDictionary(lang);
-  
+
+  const { isLoggedIn, email } = await getAuthStatusJWT();
+
   const homePath = `/${lang}`;
   const aboutPath = `/${lang}/about`;
-
-  // Имитация email пользователя
-  const userEmail = "user@example.com";
 
   return (
     <nav className="w-full bg-gray-100 border-b border-gray-200 p-4">
@@ -38,9 +38,10 @@ async function Header({ lang }: { lang: Locale }) {
         </div>
         <div className="flex items-center gap-4">
           <AuthButton
+            isLoggedIn={isLoggedIn}
             loginText={dict.header.login}
             logoutText={dict.header.logout}
-            email={userEmail}
+            email={email}
           />
           <LangSwitcher linkText={dict.header.switch} />
         </div>
