@@ -25,7 +25,7 @@ const blocks = [
             key={index}
             className="p-6 rounded-xl bg-gray-50 border border-gray-200"
           >
-            <h2 className="text-2xl font-bold mb-4">{block.title}</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center">{block.title}</h2>
             <p className="text-gray-600 ">{block.text}</p>
           </div>
         ))}

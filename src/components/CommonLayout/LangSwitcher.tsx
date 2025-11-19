@@ -29,7 +29,7 @@ export default function LangSwitcher({ linkText }: { linkText: string }) {
     <Link
       href={redirectedPathName(targetLocale)}
       onClick={handleSwitch}
-      className={buttonClass}
+      className={`${buttonClass} max-w-[200px] text-center`}
     >
       {linkText}
     </Link>

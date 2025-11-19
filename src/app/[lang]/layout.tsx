@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 type Props = {
   children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: Locale | string }>;
 };
 
 export default async function RootLayout({
@@ -32,11 +32,12 @@ export default async function RootLayout({
 const { lang } = await params;
 
   return (
-    <html lang={lang}>
+    <html lang={(lang as string)}>
       <body
         className={`${geistSans.variable} ${geistMono.variable}`}
       >
-        <Header lang={lang}/>
+        
+        <Header lang={lang as Locale}/>
         {children}
       </body>
     </html>
