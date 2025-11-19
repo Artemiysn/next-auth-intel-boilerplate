@@ -26,8 +26,6 @@ export async function getAuthStatusJWT(): Promise<AuthStatus> {
       userId: userPayload.id,
     };
   }
-
-  (await cookies()).delete(COOKIE_NAME);
   
   return { isLoggedIn: false };
 }
