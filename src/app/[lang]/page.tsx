@@ -18,7 +18,7 @@ const blocks = [
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 font-sans ">
-      <h1 className="text-3xl font-bold mb-6">{t("home.title")}</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">{t("home.title")}</h1>
       <article>
         {blocks.map((block: any, index) => (
           <div

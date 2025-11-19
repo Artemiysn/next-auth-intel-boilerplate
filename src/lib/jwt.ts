@@ -1,7 +1,7 @@
 import 'server-only';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET as string;
+const JWT_SECRET = process.env.JWT_SECRET as string || "Super-secret-JWT-code-dont-use-in-prod";
 const TOKEN_EXPIRATION = '7d'; 
 
 type UserPayload = {

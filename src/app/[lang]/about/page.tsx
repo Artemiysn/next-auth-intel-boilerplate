@@ -27,7 +27,7 @@ export default async function Home({ params }: Props) {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 font-sans ">
-      <h1 className="text-3xl font-bold mb-6">{t("about.title")}</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">{t("about.title")}</h1>
       <article>
         {blocks.map((block: any, index) => (
           <div
