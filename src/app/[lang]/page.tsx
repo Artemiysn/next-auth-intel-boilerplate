@@ -1,5 +1,5 @@
 import { Locale } from "@/lib/i18n-config";
-import { getDictionary } from "@/lib/dictionary";
+import { useTranslation } from '@/lib/i18n-server';
 
 type Props = {
   params: Promise<{ lang: Locale }>;
@@ -8,15 +8,19 @@ type Props = {
 export default async function Home({ params }: Props) {
 
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  const { t } = await useTranslation(lang);
 
-  const blocks = [dict.home.block1, dict.home.block2, dict.home.block3];
+const blocks = [
+    t("home.block1", { returnObjects: true }),
+    t("home.block2", { returnObjects: true }),
+    t("home.block3", { returnObjects: true }),
+  ];
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 font-sans ">
-      <h1 className="text-3xl font-bold mb-6">{dict.home.title}</h1>
+      <h1 className="text-3xl font-bold mb-6">{t("home.title")}</h1>
       <article>
-        {blocks.map((block, index) => (
+        {blocks.map((block: any, index) => (
           <div
             key={index}
             className="p-6 rounded-xl bg-gray-50 border border-gray-200"

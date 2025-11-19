@@ -9,6 +9,9 @@ import { buttonClass } from '../ui/Button';
 export default function LangSwitcher({ linkText }: { linkText: string }) {
 
   const pathName = usePathname();
+    
+  const currentLocale = pathName.split('/')[1];
+  const targetLocale = i18n.locales.find(l => l !== currentLocale) || 'en';
 
   const redirectedPathName = (locale: string) => {
     if (!pathName) return '/';
@@ -20,9 +23,7 @@ export default function LangSwitcher({ linkText }: { linkText: string }) {
   const handleSwitch = () => {
     Cookies.set(cookieLang, targetLocale, { expires: 365, path: '/' });
   };
-  
-  const currentLocale = pathName.split('/')[1];
-  const targetLocale = i18n.locales.find(l => l !== currentLocale) || 'en';
+
 
   return (
     <Link

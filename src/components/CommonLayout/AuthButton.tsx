@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { buttonClass } from '../ui/Button';
-import router from 'next/router';
 import { useRouter } from "next/navigation";
 
 type Props = {

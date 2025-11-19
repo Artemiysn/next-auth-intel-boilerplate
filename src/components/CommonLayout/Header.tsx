@@ -1,4 +1,4 @@
-import { getDictionary } from "@/lib/dictionary";
+import { useTranslation } from '@/lib/i18n-server'; 
 import { Locale } from "@/lib/i18n-config";
 import LangSwitcher from "./LangSwitcher";
 import Link from "next/link";
@@ -7,7 +7,8 @@ import { LinkClass } from "../ui/Link";
 import { getAuthStatusJWT } from '@/lib/auth-jwt';
 
 async function Header({ lang }: { lang: Locale }) {
-  const dict = await getDictionary(lang);
+
+  const { t } = await useTranslation(lang);
 
   const { isLoggedIn, email } = await getAuthStatusJWT();
 
@@ -19,32 +20,32 @@ async function Header({ lang }: { lang: Locale }) {
       <div className="max-w-5xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <h1 className="text-xl font-bold text-gray-800 hidden sm:block">
-            {dict.header.title}
+            {t("header.title")}
           </h1>
           <nav className="flex gap-4 ml-4">
             <Link
               href={homePath}
               className={LinkClass}
             >
-              {dict.header.nav_home}
+              {t("header.nav_home")}
             </Link>
             <Link
               href={aboutPath}
               className={LinkClass}
             >
-              {dict.header.nav_about}
+              {t("header.nav_about")}
             </Link>
           </nav>
         </div>
         <div className="flex items-center gap-4">
           <AuthButton
             isLoggedIn={isLoggedIn}
-            loginText={dict.header.login}
-            logoutText={dict.header.logout}
+            loginText={t("header.login")}
+            logoutText={t("header.logout")}
             email={email}
-            loadingText={dict.header.loading}
+            loadingText={t("header.loading")}
           />
-          <LangSwitcher linkText={dict.header.switch} />
+          <LangSwitcher linkText={t("header.switch")} />
         </div>
       </div>
     </nav>
